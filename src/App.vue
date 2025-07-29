@@ -1,30 +1,19 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import ButtonTodo from "./components/ButtonTodo.vue";
-import InputText from "./components/InputText.vue";
-
-const todoValue = ref("");
-const todoList = ref<string[]>([]);
-
-const handleClick = () => {
-  todoList.value.push(todoValue.value);
-
-  todoValue.value = "";
-};
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
   <div>
-    <InputText v-model="todoValue" />
-    <ButtonTodo @click="handleClick" :disabled="todoValue.value === ''">
-      Input
-    </ButtonTodo>
-    <ul>
-      <li v-for="(todo, index) in todoList" :key="index">
-        {{ todo }}
-      </li>
-    </ul>
+    <nav>
+      <RouterLink to="/users">User</RouterLink>
+    </nav>
+
+    <RouterView />
   </div>
 </template>
 
-<style></style>
+<style scoped>
+nav {
+  margin-bottom: 16px;
+}
+</style>
